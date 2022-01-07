@@ -1,0 +1,49 @@
+<idea-plugin>
+    <id>com.kstenschke.finderinfo.FinderInfo</id>
+    <name>Finder Info</name>
+    <vendor email="info@stenschke.com" url="">Kay Stenschke</vendor>
+
+    <description><![CDATA[
+        Extends the project files popup menu with an option for showing file information in the MacOS Finder.
+        If a file is focused in the Project view, the keyboard shortcut [CMD] + [I] opens the finder file information as well.
+        Additionally, opening the file information brings all finder windows to front.
+
+        Please note: this plugin works on MacOS only.
+    ]]></description>
+    <change-notes><![CDATA[
+    <ul>
+      <li>v1.1.0 Bugfix: Updated to run on MacOS Catalina and later</li>
+      <li>v1.0.3 Bugfix: Updated deprecated Class</li>
+      <li>v1.0.2 Bugfix: Evocation via keyboard shortcut w/o any file selected caused null pointer exception</li>
+      <li>v1.0.1 Added: Keyboard shortcut - [CMD] + [I]</li>
+      <li>v1.0.0 Initial Release</li>
+    </ul>
+    ]]>
+    </change-notes>
+
+    <application-components>
+        <!-- Add your application components here -->
+    </application-components>
+
+    <project-components>
+        <!-- Add your project components here -->
+    </project-components>
+
+
+    <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <actions>
+        <action id="FinderInfo" icon="com.kstenschke.finderinfo.resources.FinderInfoIcons.ICON_ACTION" class="com.kstenschke.finderinfo.actions.FinderInfoAction" text="Get Finder Info"
+                description='Show the "File Information" dialog in MacOS Finder'>
+            <keyboard-shortcut first-keystroke="ctrl I" keymap="$default" />
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="first"/>
+        </action>
+    </actions>
+
+</idea-plugin>
